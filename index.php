@@ -1,12 +1,18 @@
 <?php
 //INCLUIMOS LOS FICHEROS DE LAS PAGINAS DE CONEXION
+
 require_once 'includes/conexion.php';
 require_once 'includes/helpers.php';
 
-//RUTAS DE LAS IMAGENES
+
+
+//FUNCIONQUE TRAE LOS DATOS 
 $datos = registros($db);
-$ruta = "img/191/"; // Indicar la ruta
-//$ruta = fopen("D:/XAMPP/htdocs/demo/img/191/" ,"r"); // Indicar la ruta
+//$ruta = "img/191/"; // Indicar la ruta
+$link =("file:///D:/DiscoExtra/csv/191"); // Indicar la ruta
+
+
+//$ruta = fopen("file:///E:/191" ,"r"); // Indicar la ruta
 
 
 ?>
@@ -20,6 +26,14 @@ $ruta = "img/191/"; // Indicar la ruta
 
     <h1>base de cosnulta </h1>
 </head>
+<div>
+    <h1>Buscar</h1>
+    <form action="buscar.php" method="POST">
+        <input type="text" name="busqueda">
+        <input type="submit" value="buscar">
+
+    </form>
+</div>
 
 <body>
     <div>
@@ -27,8 +41,8 @@ $ruta = "img/191/"; // Indicar la ruta
         <table>
             <thead>
                 <tr>
-                 <!-- TITULOS DE LA TABLA  -->
-                    <th>#</th> 
+                    <!-- TITULOS DE LA TABLA  -->
+                    <th>#</th>
                     <th>PRONTUARIO......</th>
                     <th>NOMBRES.........</th>
                     <th>APELLIDOS.......</th>
@@ -40,27 +54,45 @@ $ruta = "img/191/"; // Indicar la ruta
 
             </thead>
             <tbody>
+
+                <!-- LISTAR LOS DATOS DE LA BASE EN LA TABLA  -->
                 <?php
-                     while($consulta =mysqli_fetch_assoc($datos)): ?>
-                    <tr>                 
-                    <td><?php echo $consulta['id'];?></td>
-                    <td><?php echo $consulta['prontuario'];?></td>
-                    <td><?php echo $consulta['nombre'];?></td>
-                    <td><?php echo $consulta['apellido'];?></td>
-                    <td><?php echo $consulta['identificacion'];?></td>
-                    
-                    
-                    <td><a href="<?php echo $ruta.$consulta['nombrearchivo'];?>">
-                    <?php echo $consulta['nombrearchivo'];
-                     
-                    ?></a></td>            
-                                       
+                while ($consulta = mysqli_fetch_assoc($datos)): ?>
+                    <tr>
+                        <td>
+                            <?php echo $consulta['id']; ?>
+                        </td>
+                        <td>
+                            <?php echo $consulta['prontuario']; ?>
+                        </td>
+                        <td>
+                            <?php echo $consulta['nombre']; ?>
+                        </td>
+                        <td>
+                            <?php echo $consulta['apellido']; ?>
+                        </td>
+                        <td>
+                            <?php echo $consulta['identificacion']; ?>
+                        </td>
+
+
+                        <!-- CREACION DEL LINK DE CONSULTA -->
+                        <td>
+                        <a
+                        href="operations/download.php?url=<?php echo $link . $consulta['nombrearchivo']; ?>&name=<?php echo $consulta['nombrearchivo']; ?>">
+                        <?php echo $consulta['nombrearchivo']; 
+                        
+                        ?>
+                        
+                    </a>
+
+                        </td>
+
                     </tr>
 
-                
                 <?php endwhile; ?>
 
-                              
+
             </tbody>
 
         </table>
@@ -72,5 +104,8 @@ $ruta = "img/191/"; // Indicar la ruta
 
 
 </body>
+
+
+
 
 </html>

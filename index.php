@@ -1,20 +1,21 @@
 <?php
 //INCLUIMOS LOS FICHEROS DE LAS PAGINAS DE CONEXION
+//INCLUIMOS LOS FICHEROS DE LAS PAGINAS DE CONSULTA SQL 
 
 require_once 'includes/conexion.php';
 require_once 'includes/helpers.php';
 
-
-
-//FUNCIONQUE TRAE LOS DATOS 
+//FUNCIONQUE TRAE LOS DATOS DESDE LA BASE DE DATOS, SE CAPTURAN UNA VARIABLE
 $datos = registros($db);
+
+//RUTA DE LA CARPETA IMG PARA CONSULTAR 
 //$ruta = "img/191/"; // Indicar la ruta
+
+// RUTA PARA CONSULTAR LOS ARCHIVOS EXTERNOS 
 $link =("file:///D:/DiscoExtra/csv/191"); // Indicar la ruta
 
 
-//$ruta = fopen("file:///E:/191" ,"r"); // Indicar la ruta
-
-
+// HTML INICIO
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,12 +27,13 @@ $link =("file:///D:/DiscoExtra/csv/191"); // Indicar la ruta
 
     <h1>base de cosnulta </h1>
 </head>
+
+<!-- BLOQUE DONDE SE REALIZARA EL FORMULARIO DE BUSQUEDA -->
 <div>
     <h1>Buscar</h1>
     <form action="buscar.php" method="POST">
         <input type="text" name="busqueda">
         <input type="submit" value="buscar">
-
     </form>
 </div>
 
@@ -79,33 +81,19 @@ $link =("file:///D:/DiscoExtra/csv/191"); // Indicar la ruta
                         <!-- CREACION DEL LINK DE CONSULTA -->
                         <td>
                         <a
-                        href="operations/download.php?url=<?php echo $link . $consulta['nombrearchivo']; ?>&name=<?php echo $consulta['nombrearchivo']; ?>">
+                        href="operations/download.php?url=<?php echo $link . $consulta['nombrearchivo'];
+                        ?>&name=<?php echo $consulta['nombrearchivo']; ?>">
                         <?php echo $consulta['nombrearchivo']; 
                         
                         ?>
                         
                     </a>
-
                         </td>
-
                     </tr>
-
                 <?php endwhile; ?>
-
-
             </tbody>
 
         </table>
-
-
-
     </div>
-
-
-
 </body>
-
-
-
-
 </html>

@@ -25,13 +25,13 @@ $link =("file:///D:/DiscoExtra/csv/191"); // Indicar la ruta
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo de consulta</title>
 
-    <h1>base de cosnulta </h1>
+    <h1>BASE DE CONSULTA</h1>
 </head>
 
 <!-- BLOQUE DONDE SE REALIZARA EL FORMULARIO DE BUSQUEDA -->
 <div>
     <h1>Buscar</h1>
-    <form action="buscar.php" method="POST">
+    <form action="operations/buscar.php" method="POST">
         <input type="text" name="busqueda">
         <input type="submit" value="buscar">
     </form>
@@ -50,7 +50,6 @@ $link =("file:///D:/DiscoExtra/csv/191"); // Indicar la ruta
                     <th>APELLIDOS.......</th>
                     <th>IDENTIFICACION..</th>
                     <th>NOMBRE ARCHIVO..</th>
-                    <th>IMG.............</th>
 
                 </tr>
 

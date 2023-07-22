@@ -1,17 +1,31 @@
 <?php
+
+require_once 'conexion.php';
 // SE CREA LA FUNCION QUE TRAE LOS DATOS DE LA BASE DE DATOS 
-function registros($conexion)
+function registros($conexion, $busqueda = null)
 {
-    // $sql="SELECT replace(r.img, '\\\', '/') as url_img, r.* FROM `rollo` r;";
-    $sql= "SELECT * FROM rollo";
+    // Comprobar si hay una búsqueda
+    if(isset($busqueda)){
+        // Escapar los caracteres especiales que puedan venir en $busqueda
+        $busqueda = htmlspecialchars($busqueda);
+        $busqueda = mysqli_real_escape_string($conexion, $busqueda);
+    
+        // Ejecutar la consulta SQL usando la variable $busqueda
+        $sql= "SELECT * FROM rollo WHERE nombrearchivo LIKE '%$busqueda%'";
+    } else {
+        // Ejecutar la consulta SQL sin filtro
+        $sql= "SELECT * FROM rollo";
+    }
 
-    $medellin = mysqli_query($conexion, $sql) or die ("No se ha podido ejecutar la consulta");
+    // Ejecutar la consulta y obtener los resultados
+    $resultado = mysqli_query($conexion, $sql) or die ("No se ha podido ejecutar la consulta");
 
-    return $medellin;
-
+    // Devolver el resultado
+    return $resultado;
 }
-
-
 ?>
+
+
+
 
 

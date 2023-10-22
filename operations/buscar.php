@@ -1,7 +1,9 @@
 <?php
 
 // RUTA PARA CONSULTAR LOS ARCHIVOS EXTERNOS 
-$link =("file:///D:/DiscoExtra/csv/191"); // Indicar la ruta
+//$link =("file:///D:/DiscoExtra/csv/191"); // Indicar la ruta
+$link =("../img/191"); // Indicar la ruta
+
 // Recibir la búsqueda del formulario
 $busqueda = $_POST['busqueda'];
 

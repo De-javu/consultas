@@ -12,8 +12,8 @@ $datos = registros($db);
 //$ruta = "img/191/"; // Indicar la ruta
 
 // RUTA PARA CONSULTAR LOS ARCHIVOS EXTERNOS 
-$link =("file:///D:/DiscoExtra/csv/191"); // Indicar la ruta
-
+//$link =("file:///D:/DiscoExtra/csv/191/"); // Indicar la ruta
+$link = ("img/191");
 
 // HTML INICIO
 ?>

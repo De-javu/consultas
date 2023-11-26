@@ -13,7 +13,7 @@ mysqli_query($db, "SET NAMES 'utf8'");
 if(mysqli_connect_errno()){
     echo "la conexion a fallado:" . mysqli_connect_errno();
 }else{
-    echo "Conexion exitosa";
+    //echo "Conexion exitosa";
 }
 
 ?>

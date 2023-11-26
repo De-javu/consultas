@@ -24,9 +24,9 @@ if(file_exists($fileLocation)){
 } else {
     echo "Archivo no encontrado";
 }
-/*Se encarga de limpiar la cache */
 
-clearstatcache(true, $fileLocation);
+
+clearstatcache(true, $fileLocation); /*Se encarga de limpiar la cache */
 ?>
 
 

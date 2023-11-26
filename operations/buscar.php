@@ -1,5 +1,10 @@
 <?php
 
+
+$skip = 0; // Declaración de la variable $skip
+$top = 0; // Declaración de la variable $top
+
+
 // RUTA PARA CONSULTAR LOS ARCHIVOS EXTERNOS 
 //$link =("file:///D:/DiscoExtra/csv/191"); // Indicar la ruta
 $link =("../img/191"); // Indicar la ruta
@@ -11,7 +16,7 @@ $busqueda = $_POST['busqueda'];
 require_once '../includes/helpers.php';
 
 // Llamar a la función registros con la búsqueda y la conexión
-$resultado = registros($db, $busqueda);
+$resultado = registros($db, $busqueda, $skip, $top);
 
 //Luego ponemo un condicinal el cual se encarga de verificar si la variable no esta basia
 //veificamos si el numero de filas que retorna la variable es >=1
@@ -46,7 +51,7 @@ while ($fila = mysqli_fetch_assoc($resultado)) {
     echo "<h1>"."Realiza una nueva consulta". "</h1>";
     echo "<h1>"."Por favor ". "</h1>";
     
-    header('refresh:3; ../index.php');
+    header('refresh:2; ../index.php?pagina=1');
 
 }
 

@@ -6,7 +6,7 @@ function registros($conexion, $busqueda = null, $skip, $top)
 {
     // Comprobar si hay una búsqueda
     if(isset($busqueda)){
-        // Escapar los caracteres especiales que puedan venir en $busqueda
+        // Escapar limpiar los caracteres especiales que puedan venir en $busqueda
         $busqueda = htmlspecialchars($busqueda);
         $busqueda = mysqli_real_escape_string($conexion, $busqueda);
     
@@ -14,7 +14,12 @@ function registros($conexion, $busqueda = null, $skip, $top)
         $sql= "SELECT * FROM rollo WHERE nombrearchivo LIKE '%$busqueda%'";
     } else {
         // Ejecutar la consulta SQL sin filtro
-        $sql= "SELECT * FROM rollo limit ". $top ." offset " . $skip - $top;
+
+
+       $offset = max(0, $skip - $top);
+       $sql= "SELECT * FROM rollo limit ". $top ." offset " . $offset;
+
+        //$sql= "SELECT * FROM rollo limit ". $top ." offset " . ($skip - $top);
     }
 
     // Ejecutar la consulta y obtener los resultados
@@ -46,8 +51,3 @@ function size($conexion, $busqueda = null )
     return $resultado;
 }
 ?>
-
-
-
-
-

@@ -1,5 +1,5 @@
 <?php
-// conexion
+// Se realizala logica para la conexion a la base de datos
 
 $servidor = 'localhost';
 $usuario = 'root';
